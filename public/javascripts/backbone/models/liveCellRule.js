@@ -1,5 +1,5 @@
 GameOfLife.LiveCellRule = Backbone.Model.extend({
   applicable: function(cell){
-    return cell.get('nextGenerationAlive') === undefined && cell.get('alive');
+    return !cell.has('nextGenerationAlive') && cell.get('alive');
   }
 });

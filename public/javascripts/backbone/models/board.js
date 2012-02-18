@@ -27,7 +27,7 @@ GameOfLife.Board = Backbone.Model.extend((function(){
   };
   
   var actOnLiveNeighbors = function(x, y, cells, action){
-    if(cells[getKey(x, y)].get('alive')){
+    if(cells[getKey(x, y)] !== undefined && cells[getKey(x, y)].get('alive')){
       action();
     }
   };
