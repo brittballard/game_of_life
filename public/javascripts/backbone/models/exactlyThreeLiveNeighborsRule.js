@@ -3,7 +3,7 @@ GameOfLife.ExactlyThreeLiveNeighborsRule = GameOfLife.DeadCellRule.extend({
     var liveNeighborCount = board.liveNeighborCount(cell.get('x'), cell.get('y'));
     
     if(liveNeighborCount == 3){
-      cell.set('alive', true);
+      cell.set('nextGenerationAlive', true);
     }
   }
 });

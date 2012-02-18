@@ -15,7 +15,7 @@ describe('exactlyThreeLiveNeighborsRule', function(){
       
       rule.apply(cell, board);
       
-      expect(cell.get('alive')).toBeTruthy();
+      expect(cell.get('nextGenerationAlive')).toBeTruthy();
     });
   });
 })
