@@ -5,5 +5,8 @@ GameOfLife.ExactlyThreeLiveNeighborsRule = GameOfLife.DeadCellRule.extend({
     if(liveNeighborCount == 3){
       cell.set('nextGenerationAlive', true);
     }
+    else{
+      cell.set('nextGenerationAlive', false);
+    }
   }
 });

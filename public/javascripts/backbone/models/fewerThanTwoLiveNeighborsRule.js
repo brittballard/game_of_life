@@ -4,5 +4,8 @@ GameOfLife.FewerThanTwoLiveNeighborsRule = GameOfLife.LiveCellRule.extend({
     if(liveNeighborCount < 2){
       cell.set('nextGenerationAlive', false);
     }
+    else{
+      cell.set('nextGenerationAlive', true);
+    }
   }
 });
