@@ -14,14 +14,25 @@ describe('board', function(){
   });
   
   describe('setLiveCell', function(){
+    board.setLiveCell(1,2);
+    
     it('should add a new value to the cells dictionary with a key that is the x/y cordinates of the cell', function(){
-      board.setLiveCell(1,2);
       expect(board.cells['1,2']).toBeDefined();
     });
     
     it('should set the new cell\'s status to \'alive\'', function(){
-      board.setLiveCell(1,2);
       expect(board.cells['1,2'].status).toEqual('alive');
+    });
+    
+    it('should add dead cells all around it if a live cell isn\'t already there', function(){
+      // expect(board.cells['0,1'].status).toEqual('dead');
+      // expect(board.cells['0,2'].status).toEqual('dead');
+      // expect(board.cells['0,3'].status).toEqual('dead');
+      // expect(board.cells['1,3'].status).toEqual('dead');
+      // expect(board.cells['1,1'].status).toEqual('dead');
+      // expect(board.cells['2,3'].status).toEqual('dead');
+      // expect(board.cells['2,2'].status).toEqual('dead');
+      // expect(board.cells['2,1'].status).toEqual('dead');
     });
   });
 });
