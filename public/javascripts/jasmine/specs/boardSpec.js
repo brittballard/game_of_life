@@ -81,4 +81,14 @@ describe('board', function(){
       expect(board.liveNeighborCount(1,2)).toEqual(3);
     });
   });
+  
+  describe('deadNeighborCount', function(){
+    it('should return the count of dead cells around a cell', function(){
+      board.setLiveCell(1,2);
+      board.setLiveCell(0,2);
+      board.setLiveCell(2,1);
+      board.setLiveCell(2,3);
+      expect(board.deadNeighborCount(1,2)).toEqual(5);
+    });
+  });
 });

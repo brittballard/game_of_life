@@ -72,7 +72,7 @@ GameOfLife.Board = Backbone.Model.extend((function(){
     },
     
     deadNeighborCount: function(x, y){
-      
+      return 8 - this.liveNeighborCount(x, y);
     }
   }
 })());
