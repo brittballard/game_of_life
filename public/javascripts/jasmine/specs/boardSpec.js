@@ -1,6 +1,10 @@
 describe('board', function(){
   var board = new GameOfLife.Board();
   
+  beforeEach(function(){
+      board.cells = {}
+  });
+  
   it('should contain a cells property', function(){
     expect(board.cells).toBeDefined();
   });
@@ -65,6 +69,16 @@ describe('board', function(){
       board.killCell(1,2);
       board.reanimateCell(1,2);
       expect(board.cells['1,2'].get('alive')).toBeTruthy();      
+    });
+  });
+  
+  describe('liveNeighborCount', function(){
+    it('should return the count of living cells around a cell', function(){
+      board.setLiveCell(1,2);
+      board.setLiveCell(0,2);
+      board.setLiveCell(2,1);
+      board.setLiveCell(2,3);
+      expect(board.liveNeighborCount(1,2)).toEqual(3);
     });
   });
 });

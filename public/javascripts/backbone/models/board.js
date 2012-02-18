@@ -26,6 +26,12 @@ GameOfLife.Board = Backbone.Model.extend((function(){
     }
   };
   
+  var actOnLiveNeighbors = function(x, y, cells, action){
+    if(cells[getKey(x, y)].get('alive')){
+      action();
+    }
+  };
+  
   return { 
     cells: {},
     
@@ -48,6 +54,25 @@ GameOfLife.Board = Backbone.Model.extend((function(){
     
     reanimateCell: function(x, y){
       this.cells[getKey(x,y)].set({ alive: true });
+    },
+    
+    liveNeighborCount: function(x, y){
+      var liveNeighbors = 0;
+      
+      actOnLiveNeighbors(x, y-1, this.cells, function() { liveNeighbors++; });
+      actOnLiveNeighbors(x, y+1, this.cells, function() { liveNeighbors++; });
+      actOnLiveNeighbors(x-1, y-1, this.cells, function() { liveNeighbors++; });
+      actOnLiveNeighbors(x-1, y, this.cells, function() { liveNeighbors++; });
+      actOnLiveNeighbors(x-1, y+1, this.cells, function() { liveNeighbors++; });
+      actOnLiveNeighbors(x+1, y-1, this.cells, function() { liveNeighbors++; });
+      actOnLiveNeighbors(x+1, y, this.cells, function() { liveNeighbors++; });
+      actOnLiveNeighbors(x+1, y+1, this.cells, function() { liveNeighbors++; });
+      
+      return liveNeighbors;
+    },
+    
+    deadNeighborCount: function(x, y){
+      
     }
   }
 })());
