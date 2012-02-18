@@ -1,4 +1,4 @@
-var gameOfLife.board = Backbone.Model.extend({
+GameOfLife.Board = Backbone.Model.extend({
   cells: {},
   setLiveCell: function(x, y){
     
@@ -6,4 +6,4 @@ var gameOfLife.board = Backbone.Model.extend({
   setDeadCell: function(x, y){
     
   }
-})
+});
