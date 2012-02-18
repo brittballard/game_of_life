@@ -23,39 +23,39 @@ describe('board', function(){
       expect(board.cells['1,2']).toBeDefined();
     });
     
-    it('should set the new cell\'s status to \'alive\'', function(){
+    it('should set the new cell\'s is \'alive\'', function(){
       board.setLiveCell(1,2);
-      expect(board.cells['1,2'].get('status')).toEqual('alive');
+      expect(board.cells['1,2'].get('alive')).toBeTruthy();
     });
     
     it('should add dead cells all around it if a live cell isn\'t already there', function(){
       board.setLiveCell(1,2);
-      expect(board.cells['0,1'].get('status')).toEqual('dead');
-      expect(board.cells['0,2'].get('status')).toEqual('dead');
-      expect(board.cells['0,3'].get('status')).toEqual('dead');
-      expect(board.cells['1,3'].get('status')).toEqual('dead');
-      expect(board.cells['1,1'].get('status')).toEqual('dead');
-      expect(board.cells['2,3'].get('status')).toEqual('dead');
-      expect(board.cells['2,2'].get('status')).toEqual('dead');
-      expect(board.cells['2,1'].get('status')).toEqual('dead');
+      expect(board.cells['0,1'].get('alive')).toBeFalsy();
+      expect(board.cells['0,2'].get('alive')).toBeFalsy();
+      expect(board.cells['0,3'].get('alive')).toBeFalsy();
+      expect(board.cells['1,3'].get('alive')).toBeFalsy();
+      expect(board.cells['1,1'].get('alive')).toBeFalsy();
+      expect(board.cells['2,3'].get('alive')).toBeFalsy();
+      expect(board.cells['2,2'].get('alive')).toBeFalsy();
+      expect(board.cells['2,1'].get('alive')).toBeFalsy();
     });
     
     it('should not add a dead cell if a cell already exists in a square on the board', function(){
       board.cells['0,1'] = new GameOfLife.Cell({
         x: 0,
         y: 1,
-        status: 'alive'
+        alive: true
       });
       board.setLiveCell(1,2);
-      expect(board.cells['0,1'].get('status')).toEqual('alive');
+      expect(board.cells['0,1'].get('alive')).toBeTruthy();
     });
   });
   
   describe('killCell', function(){
-    it('should change a cell\'s status from alive to dead', function(){
+    it('should change a cell from alive to dead', function(){
       board.setLiveCell(1,2);
       board.killCell(1,2);
-      expect(board.cells['1,2'].get('status')).toEqual('dead');
+      expect(board.cells['1,2'].get('alive')).toBeFalsy();
     });
   });
   
@@ -64,7 +64,7 @@ describe('board', function(){
       board.setLiveCell(1,2);
       board.killCell(1,2);
       board.reanimateCell(1,2);
-      expect(board.cells['1,2'].get('status')).toEqual('alive');      
+      expect(board.cells['1,2'].get('alive')).toBeTruthy();      
     });
   });
 });

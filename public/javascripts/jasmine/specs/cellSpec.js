@@ -10,10 +10,10 @@ describe('cell', function(){
   });
   
   it('should have a statu property that is undefined', function(){
-    expect(cell.status).toBeUndefined();
+    expect(cell.alive).toBeUndefined();
   });
   
-  it('should have a nextGenerationStatus property that is undefined', function(){
-    expect(cell.nextGenerationStatus).toBeUndefined();
+  it('should have a nextGenerationAlive property that is undefined', function(){
+    expect(cell.nextGenerationAlive).toBeUndefined();
   });
 });

@@ -2,26 +2,26 @@ describe('deadCellRule', function(){
   var deadCellRule = new GameOfLife.DeadCellRule();
   
   describe('Applicable', function(){
-    it('should return false if the cell status is \'alive\'', function(){
+    it('should return false if the cell is \'alive\'', function(){
       var cell = new GameOfLife.Cell({
-        status: 'alive'
+        alive: true
       });
       
       expect(deadCellRule.applicable(cell)).toBeFalsy();
     });
     
-    it('should return true if the cell status is \'dead\'', function(){
+    it('should return true if the cell is \'dead\'', function(){
       var cell = new GameOfLife.Cell({
-        status: 'dead'
+        alive: false
       });
       
       expect(deadCellRule.applicable(cell)).toBeTruthy();
     });
     
-    it('should return false if the cell nextGenerationStatus is not undefined', function(){
+    it('should return false if the cell nextGenerationAlive is not undefined', function(){
       var cell = new GameOfLife.Cell({
-        status: 'dead',
-        nextGenerationStatus: 'alive'
+        alive: false,
+        nextGenerationAlive: true
       });
       
       expect(deadCellRule.applicable(cell)).toBeFalsy();

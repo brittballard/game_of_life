@@ -7,7 +7,7 @@ GameOfLife.Board = Backbone.Model.extend((function(){
     return new GameOfLife.Cell({
         x: x,
         y: y,
-        status: 'alive'
+        alive: true
     });    
   };
   
@@ -15,7 +15,7 @@ GameOfLife.Board = Backbone.Model.extend((function(){
     return new GameOfLife.Cell({
         x: x,
         y: y,
-        status: 'dead'
+        alive: false
     });
   };
   
@@ -43,11 +43,11 @@ GameOfLife.Board = Backbone.Model.extend((function(){
     },
     
     killCell: function(x, y){
-      this.cells[getKey(x,y)].set({ status: 'dead' });
+      this.cells[getKey(x,y)].set({ alive: false });
     },
     
     reanimateCell: function(x, y){
-      this.cells[getKey(x,y)].set({ status: 'alive' });
+      this.cells[getKey(x,y)].set({ alive: true });
     }
   }
 })());
