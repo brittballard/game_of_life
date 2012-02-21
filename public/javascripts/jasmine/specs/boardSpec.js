@@ -21,6 +21,16 @@ describe('board', function(){
     expect(board.reanimateCell).toBeDefined();
   });
   
+  describe('moveToNextGeneration', function(){
+    it('should set each cells alive flag to the current value in the nextGenrationAlive property and set the nextGenerationAlive property to undefined', function(){
+      board.cells['1,2'] = new GameOfLife.Cell({ alive: false, nextGenerationAlive: true });
+      board.moveToNextGeneration();
+      
+      expect(board.cells['1,2'].get('alive')).toBeTruthy();
+      expect(board.cells['1,2'].has('nextGenerationAlive')).toBeFalsy();
+    });
+  });
+  
   describe('setLiveCell', function(){
     it('should add a new value to the cells dictionary with a key that is the x/y cordinates of the cell', function(){
       board.setLiveCell(1,2);

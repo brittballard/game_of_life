@@ -35,6 +35,13 @@ GameOfLife.Board = Backbone.Model.extend((function(){
   return { 
     cells: {},
     
+    moveToNextGeneration: function(){
+      $.each(this.cells, function(index, cell){
+        cell.set({ alive: cell.get('nextGenerationAlive') });
+        cell.set({ nextGenerationAlive: undefined });
+      });
+    },
+    
     setLiveCell: function(x, y){
       this.cells[getKey(x,y)] = getLiveCell(x,y);
       
