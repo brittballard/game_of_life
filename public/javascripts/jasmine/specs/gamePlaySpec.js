@@ -16,15 +16,36 @@ describe('gamePlay', function(){
   
   describe('play', function(){
     it('should call the apply method on each applicable rule', function(){      
-      board.cells['1,2'] = "My Cell";
+      var myCell = new GameOfLife.Cell();
+      board.cells['1,2'] = myCell;
       var applicableSpy = spyOn(rule, 'applicable').andReturn(true);
       var applySpy = spyOn(rule, 'apply');
       
       gamePlay.play();
         
-      expect(rule.apply).toHaveBeenCalledWith("My Cell");
+      expect(rule.apply).toHaveBeenCalledWith(myCell);
       expect(applicableSpy.callCount).toEqual(1);
       expect(applySpy.callCount).toEqual(1);
+    });
+    
+    it('should continue to process until the next generation results in all dead cells', function(){      
+      board.cells['1,2'] = new GameOfLife.Cell();
+      var applicableSpy = spyOn(rule, 'applicable').andReturn(true);
+      var generationCount = 0;
+      var applySpy = spyOn(rule, 'apply').andCallFake(function(cell){
+        if(generationCount == 2){
+          cell.set({ nextGenerationAlive: false });
+        }
+        else{
+          cell.set({ nextGenerationAlive: true });
+          generationCount++;          
+        }
+      });
+      var boardSpy = spyOn(board, 'moveToNextGeneration');
+      
+      gamePlay.play();
+      
+      expect(board.moveToNextGeneration.callCount).toEqual(3);
     });
   });
 });
