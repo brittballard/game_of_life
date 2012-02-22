@@ -1,4 +1,4 @@
-GameOfLife.Board = Backbone.Model.extend((function(){  
+GameOfLife.Models.Board = Backbone.Model.extend((function(){  
   var getKey = function(x,y){
     return x.toString() + ',' + y.toString();
   };

@@ -1,4 +1,4 @@
-GameOfLife.Cell = Backbone.Model.extend({
+GameOfLife.Models.Cell = Backbone.Model.extend({
   x: undefined,
   y: undefined,
   alive: undefined,
