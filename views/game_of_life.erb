@@ -1,1 +1,27 @@
-Are you ready for the worlds sexiest game of life?
+<html>
+  <head>
+    <script src="../javascripts/backbone/jquery.js"></script>    
+    <script src="../javascripts/backbone/underscore.js"></script>
+    <script src="../javascripts/backbone/backbone.js"></script>
+    <script src="../javascripts/application.js"></script>
+    <script src="../javascripts/backbone/models/cell.js"></script>
+    <script src="../javascripts/backbone/models/board.js"></script>
+    <script src="../javascripts/deadCellRule.js"></script>
+    <script src="../javascripts/liveCellRule.js"></script>
+    <script src="../javascripts/exactlyThreeLiveNeighborsRule.js"></script>
+    <script src="../javascripts/fewerThanTwoLiveNeighborsRule.js"></script>
+    <script src="../javascripts/threeOrMoreLiveNeighborsRule.js"></script>
+    <script src="../javascripts/twoOrThreeLiveNeighborsRule.js"></script>
+    <script src="../javascripts/gamePlay.js"></script>
+    <script src="../javascripts/backbone/views/cell.js"></script>
+    <script src="../javascripts/backbone/views/app.js"></script>
+  </head>
+  <body>
+    <div id="gameOfLifeApp">
+    </div>
+  </body>
+  <script>
+    var app = new GameOfLife.Views.App({ el: $('#gameOfLifeApp') });
+    app.render();
+  </script>
+</html>
